@@ -1,0 +1,40 @@
+# =========================================================
+# MD Molas e Artefatos de Aço
+# Ajustes de limite de upload para o formulário de orçamento
+# (funciona em hospedagens que usam mod_php / suPHP).
+# Se a sua hospedagem usa PHP-FPM, o arquivo .user.ini já
+# incluído cobre esse caso — não precisa mexer em nada.
+# =========================================================
+
+<IfModule mod_php.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 21M
+  php_value max_execution_time 120
+  php_value max_input_time 120
+  php_value memory_limit 128M
+</IfModule>
+
+<IfModule mod_php7.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 21M
+  php_value max_execution_time 120
+  php_value max_input_time 120
+  php_value memory_limit 128M
+</IfModule>
+
+<IfModule mod_php8.c>
+  php_value upload_max_filesize 20M
+  php_value post_max_size 21M
+  php_value max_execution_time 120
+  php_value max_input_time 120
+  php_value memory_limit 128M
+</IfModule>
+
+# Impede acesso direto pelo navegador aos arquivos de configuração e à
+# biblioteca de e-mail — eles só devem ser usados pelo process-orcamento.php.
+<FilesMatch "^(config\.php)$">
+  Require all denied
+</FilesMatch>
+
+# Bloqueia listagem de diretórios
+Options -Indexes
